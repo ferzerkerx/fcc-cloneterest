@@ -1,0 +1,16 @@
+{
+  "name": "FCC Cloneterest",
+  "description": "FCC Cloneterest using AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ferzerkerx/fcc-cloneterest",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "angular": "1.4.x",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.1.1",
+    "angular-route": "1.4.x",
+    "angular-resource": "1.4.x",
+    "Chart.js": "^2.1.6"
+  }
+}
