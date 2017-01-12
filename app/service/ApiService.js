@@ -9,6 +9,19 @@ function ApiService () {
 
     this.listAllPics = function (req, res) {
 
+        //TOOD remove hardcoded values
+        // var pic = new UserPic({
+        //     creator: 'someUSer',
+        //     title: 'someTitle',
+        //     url: '/public/img/placeholder.png',
+        //     description: 'someDescription'
+        // });
+        //
+        //
+        // pic.save(function(err, userPics) {
+        // });
+
+
         UserPic.find({}, function(err, userPics){
             if (err) {
                 console.log(err);

@@ -14,3 +14,8 @@ body {
 .main-content {
     background-color: #545E75;
 }
+
+.interest-img {
+    max-height: 10vh;
+    max-width: 10vw;
+}

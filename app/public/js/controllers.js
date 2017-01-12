@@ -6,27 +6,27 @@ var cloneControllers = angular.module('cloneControllers', []);
 cloneControllers.controller('allPicsController', ['$scope', '$route', '$window','$location', 'cloneService',
     function ($scope, $route, $window, $location, cloneService) {
 
-        var listPolls = function() {
+        var listPics = function() {
             cloneService.listPics().then(function(data) {
                 $scope.pics = data;
             });
         };
 
-        listPolls();
+        listPics();
 
     }]);
 
 cloneControllers.controller('myPicsController', ['$scope', '$route', '$window','$location', 'cloneService',
     function ($scope, $route, $window, $location, cloneService) {
 
-        var listMyPolls = function() {
+        var listMyPics = function() {
             cloneService.listMyPics().then(function(data) {
                 $scope.polls = data;
             });
         };
 
 
-        listMyPolls();
+        listMyPics();
     }]);
 
 
