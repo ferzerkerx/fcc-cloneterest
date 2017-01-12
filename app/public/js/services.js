@@ -18,6 +18,13 @@ cloneServices.factory('cloneService', ['$http', '$location',
             });
         };
 
+        var savePicture= function(data) {
+            var url = appContext + '/api/pic';
+            return $http.post(url, data).then(function (response) {
+                return response.data;
+            });
+        };
+
         var listMyPics = function() {
             var url = appContext + '/api/my-pics';
             return $http.get(url).then(function (response) {
@@ -48,6 +55,7 @@ cloneServices.factory('cloneService', ['$http', '$location',
 
         return {
             listPics: listPics,
+            savePicture: savePicture,
             listMyPics: listMyPics,
             doLogin: doLogin,
             doLogout: doLogout,

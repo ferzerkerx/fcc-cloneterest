@@ -9,19 +9,6 @@ function ApiService () {
 
     this.listAllPics = function (req, res) {
 
-        //TOOD remove hardcoded values
-        // var pic = new UserPic({
-        //     creator: 'someUSer',
-        //     title: 'someTitle',
-        //     url: '/public/img/placeholder.png',
-        //     description: 'someDescription'
-        // });
-        //
-        //
-        // pic.save(function(err, userPics) {
-        // });
-
-
         UserPic.find({}, function(err, userPics){
             if (err) {
                 console.log(err);
@@ -40,6 +27,27 @@ function ApiService () {
             }
             return res.json(userPics);
         });
+    };
+
+    this.savePic = function(req, res) {
+
+        //TOOD remove hardcoded values
+        var pic = new UserPic({
+            creator: req.session.userData.userName,
+            title: req.body.title,
+            url: '/public/img/placeholder.png', //TODO
+            description: 'someDescription' //TODO
+        });
+
+
+        pic.save(function(err, userPic) {
+            if (err) {
+                console.log(err);
+                return res.json(500, {});
+            }
+            return res.json(userPic);
+        });
+
     };
 
 

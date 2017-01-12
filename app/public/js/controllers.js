@@ -12,7 +12,33 @@ cloneControllers.controller('allPicsController', ['$scope', '$route', '$window',
             });
         };
 
+        $scope.showPicDialog = function() {
+            $('#picsModal').modal('show');
+        }
+
+        $scope.savePicture = function() {
+            //TODO validate form data
+
+            var data = {
+              title : $scope.form.title,
+              url : $scope.form.url
+            };
+            cloneService.savePicture(data).then(function(data) {
+                // $('#picsModal').modal('hide');
+                location.reload();
+            });
+        };
+
+
+        var resetForm = function() {
+            $scope.form =  {
+                title: '',
+                uril: ''
+            }
+        };
+
         listPics();
+        resetForm();
 
     }]);
 
