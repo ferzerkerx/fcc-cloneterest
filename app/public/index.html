@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html lang="en"  ng-app="cloneterestApp">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
-    <title>FCC Voting App</title>
+    <title>FCC Cloneterest App</title>
     <link rel="stylesheet" href="public/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="public/css/app.css">
 </head>
 <body>
 
+<div ng-controller="barController" class="container container-fluid">
+    <nav class="navbar navbar-default">
+        <div>
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle"
+                        data-toggle="collapse" data-target="#example-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="/#/all-pics">FCC Cloneterest App</a>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-show="userDetails.isLogged"><a href="/#/my-pics" data-toggle="tab">My pics</a></li>
+                    <li ng-show="!userDetails.isLogged"><button ng-click="twitterLogin()" class="btn btn-primary sign-in">Sign in with twitter</button></li>
+
+                    <li ng-show="userDetails.isLogged">
+                        <div class="dropdown sign-in">
+
+                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">
+                                {{userDetails.name}}
+                                <span class="caret"></span>
+                            </button>
+
+                            <ul class="dropdown-menu">
+                                <li class="text-center"><button ng-click="twitterLogout()" class="btn btn-danger sign-out">Sign out</button></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+</div>
 
 <div class="container main-content">
     <div class="row">

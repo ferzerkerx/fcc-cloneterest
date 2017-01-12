@@ -1,0 +1,16 @@
+.by {
+    position: fixed;
+    bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 96%;
+}
+
+body {
+    background-color: #A7CCED;
+    color: #82A0BC;
+}
+
+.main-content {
+    background-color: #545E75;
+}

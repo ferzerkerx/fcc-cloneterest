@@ -7,7 +7,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 var routesIndex = require('./app/routes/index.js');
-// var routesApi = require('./app/routes/api.js');
+var routesApi = require('./app/routes/api.js');
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,7 +29,7 @@ app.use(session({
 app.use('/public', express.static(process.cwd() + '/app/public'));
 
 routesIndex(app);
-// routesApi(app);
+routesApi(app);
 
 var port = process.env.PORT || 8080;
 app.listen(port,  function () {
