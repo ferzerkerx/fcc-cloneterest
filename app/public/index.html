@@ -26,26 +26,22 @@
                 <a class="navbar-brand" href="/#/all-pics">FCC Cloneterest App</a>
             </div>
             <div class="collapse navbar-collapse" id="example-navbar-collapse">
-                <div>
+
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-show="userDetails.isLogged"><a href="/#/my-pics" data-toggle="tab">My pics</a></li>
-                    <li ng-show="!userDetails.isLogged"><button ng-click="twitterLogin()" class="btn btn-primary sign-in">Sign in with twitter</button></li>
-
-                    <li ng-show="userDetails.isLogged">
-                        <div class="dropdown sign-in">
-
-                            <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">
-                                {{userDetails.name}}
-                                <span class="caret"></span>
+                    <li ng-show="!userDetails.isLogged"><a><button ng-click="twitterLogin()" class="btn btn-primary sign-in">Sign in with twitter</button></a></li>
+                    <li class="dropdown" ng-show="userDetails.isLogged">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-success" type="button">
+                            {{userDetails.name}}
+                            <span class="caret"></span>
                             </button>
-
-                            <ul class="dropdown-menu">
-                                <li class="text-center"><button ng-click="twitterLogout()" class="btn btn-danger sign-out">Sign out</button></li>
-                            </ul>
-                        </div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="text-center"><button ng-click="twitterLogout()" class="btn btn-danger sign-out">Sign out</button></li>
+                        </ul>
                     </li>
                 </ul>
-                </div>
             </div>
 
         </div>
