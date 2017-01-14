@@ -1,5 +1,15 @@
 'use strict';
 
+function initializeMasonry() {
+    var elem = document.querySelector('.grid');
+    if (!elem) {
+        return;
+    }
+    new Masonry( elem, {
+        itemSelector: '.grid-item',
+        columnWidth: 200
+    });
+}
 
 var cloneControllers = angular.module('cloneControllers', []);
 
@@ -50,10 +60,6 @@ cloneControllers.controller('myPicsController', ['$scope', '$route', '$window','
             }
         };
 
-        $scope.postRender = function() {
-            initializeMasonry();
-        };
-
         $scope.deletePic = function(pic) {
             var shouldDeletePicture = $window.confirm("Are you sure you want to delete:"  + pic.title + "?");
             if (shouldDeletePicture === true) {
@@ -93,11 +99,11 @@ cloneControllers.controller('barController', ['$scope', '$rootScope', '$route', 
 
     }]);
 
-function initializeMasonry() {
-    var elem = document.querySelector('.grid');
-    var msnry = new Masonry( elem, {
-        // options
-        itemSelector: '.grid-item',
-        columnWidth: 200
-    });
-}
+
+cloneControllers.controller('footerController', ['$rootScope',
+    function ($rootScope) {
+        $rootScope.postRender = (function(){
+            initializeMasonry();
+        });
+
+    }]);

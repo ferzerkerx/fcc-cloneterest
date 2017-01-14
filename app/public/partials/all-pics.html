@@ -1,7 +1,6 @@
 <div class="all-pics-div">
-    <div ng-repeat="pic in pics" class="pic-div">
-        <img src="{{pic.url}}" class="interest-img"/>
-        <h4>{{pic.title}}</h4>
-        {{pic.creator}}
-    </div>
+    <span ng-include="'public/partials/pics_grid.html'">
+    </span>
 </div>
+
+{{postRender()}}

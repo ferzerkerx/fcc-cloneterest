@@ -1,0 +1,12 @@
+<div class="grid">
+    <div ng-repeat="pic in pics" class="pic-div grid-item">
+        <div class="pic-div-content text-center">
+            <img ng-src="{{pic.url}}" class="interest-img"/>
+            <h4>{{pic.title}}</h4>
+            {{pic.creator}}
+            <button ng-click="deletePic(pic)" class="btn btn-danger">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,18 +1,7 @@
 <div class="my-pics-div">
 
-    <div class="grid">
-        <div ng-repeat="pic in pics" class="pic-div grid-item">
-            <div class="pic-div-content text-center">
-                <img ng-src="{{pic.url}}" class="interest-img"/>
-                <h4>{{pic.title}}</h4>
-                {{pic.creator}}
-                <button ng-click="deletePic(pic)" class="btn btn-danger">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
+    <span ng-include="'public/partials/pics_grid.html'">
+    </span>
 
     <div class="add-pic pull-right">
         <button ng-click="showPicDialog()" class="btn btn-success">+</button>
