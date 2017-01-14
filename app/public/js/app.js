@@ -1,18 +1,17 @@
 'use strict';
 
-
 if (window.opener)  {
     window.opener.location.reload();
     window.close();
 }
 
-var votingApp = angular.module('cloneterestApp', [
+var cloneterestApp = angular.module('cloneterestApp', [
     'ngRoute',
     'cloneControllers',
     'cloneServices'
 ]);
 
-votingApp.config(['$routeProvider',
+cloneterestApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
         when('/my-pics', {

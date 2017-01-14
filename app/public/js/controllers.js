@@ -12,16 +12,29 @@ cloneControllers.controller('allPicsController', ['$scope', '$route', '$window',
             });
         };
 
+        listPics();
+
+    }]);
+
+cloneControllers.controller('myPicsController', ['$scope', '$route', '$window','$location', 'cloneService',
+    function ($scope, $route, $window, $location, cloneService) {
+
+        var listMyPics = function() {
+            cloneService.listMyPics().then(function(data) {
+                $scope.pics = data;
+            });
+        };
+
         $scope.showPicDialog = function() {
             $('#picsModal').modal('show');
-        }
+        };
 
         $scope.savePicture = function() {
             //TODO validate form data
 
             var data = {
-              title : $scope.form.title,
-              url : $scope.form.url
+                title : $scope.form.title,
+                url : $scope.form.url
             };
             cloneService.savePicture(data).then(function(data) {
                 // $('#picsModal').modal('hide');
@@ -33,25 +46,16 @@ cloneControllers.controller('allPicsController', ['$scope', '$route', '$window',
         var resetForm = function() {
             $scope.form =  {
                 title: '',
-                uril: ''
+                url: ''
             }
         };
 
-        listPics();
-        resetForm();
-
-    }]);
-
-cloneControllers.controller('myPicsController', ['$scope', '$route', '$window','$location', 'cloneService',
-    function ($scope, $route, $window, $location, cloneService) {
-
-        var listMyPics = function() {
-            cloneService.listMyPics().then(function(data) {
-                $scope.polls = data;
-            });
+        $scope.postRender = function() {
+            initializeMasonry();
         };
 
 
+        resetForm();
         listMyPics();
     }]);
 
@@ -79,3 +83,12 @@ cloneControllers.controller('barController', ['$scope', '$rootScope', '$route', 
         });
 
     }]);
+
+function initializeMasonry() {
+    var elem = document.querySelector('.grid');
+    var msnry = new Masonry( elem, {
+        // options
+        itemSelector: '.grid-item',
+        columnWidth: 200
+    });
+}

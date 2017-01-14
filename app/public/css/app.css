@@ -19,3 +19,14 @@ body {
     max-height: 10vh;
     max-width: 10vw;
 }
+
+.pic-div {
+    padding-bottom: 2em;
+}
+
+.grid-item { width: 200px; }
+
+.add-pic {
+
+}
+
