@@ -16,6 +16,9 @@ module.exports = function (app) {
     app.route('/api/pic')
         .post(apiService.savePic);
 
+    app.route('/api/pic/:selectedPic')
+        .delete(apiService.deletePic);
+
     app.route('/api/userDetails')
         .get(apiService.userDetails);
 

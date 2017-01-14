@@ -29,6 +29,17 @@ function ApiService () {
         });
     };
 
+    this.deletePic = function(req, res) {
+        var filters = {creator: req.session.userData.userName, _id: req.params.selectedPic};
+        UserPic.findOneAndRemove(filters, function(err, pic) {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(err);
+            }
+            return res.json(pic);
+        });
+    };
+
     this.savePic = function(req, res) {
 
         //TOOD remove hardcoded values

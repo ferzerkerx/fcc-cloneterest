@@ -54,6 +54,15 @@ cloneControllers.controller('myPicsController', ['$scope', '$route', '$window','
             initializeMasonry();
         };
 
+        $scope.deletePic = function(pic) {
+            var shouldDeletePicture = $window.confirm("Are you sure you want to delete:"  + pic.title + "?");
+            if (shouldDeletePicture === true) {
+                cloneService.deletePicture(pic._id).then(function() {
+                    $route.reload();
+                });
+            }
+        };
+
 
         resetForm();
         listMyPics();

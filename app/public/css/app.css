@@ -21,12 +21,21 @@ body {
 }
 
 .pic-div {
-    padding-bottom: 2em;
+    padding: 0.3em;
+    background-color: lightgray;
+    border-radius: 5px;
+
 }
 
-.grid-item { width: 200px; }
+.grid-item { width: 150px; }
 
 .add-pic {
 
 }
 
+.pic-div-content {
+    width: 95%;
+    margin: 0.1em auto;
+    border: solid whitesmoke 1px;
+    padding: 0.5em;
+}

@@ -53,13 +53,21 @@ cloneServices.factory('cloneService', ['$http', '$location',
             });
         };
 
+        var deletePicture = function(picId) {
+            var url = appContext + '/api/pic/' + picId;
+            return $http.delete(url).then(function (response) {
+                return response.data;
+            });
+        };
+
         return {
             listPics: listPics,
             savePicture: savePicture,
             listMyPics: listMyPics,
             doLogin: doLogin,
             doLogout: doLogout,
-            userDetails: userDetails
+            userDetails: userDetails,
+            deletePicture: deletePicture
         };
     }]);
 
