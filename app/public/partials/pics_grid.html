@@ -8,11 +8,11 @@
                 <i class="fa fa-times" aria-hidden="true"></i>
             </button>
 
-            <button ng-show="!pic.isLinked" ng-click="linkToPic(pic)" class="btn">
+            <button ng-show="!pic.isLinked" ng-click="linkToPic(pic)" ng-disabled="!userDetails.isLogged" class="btn">
                 <i class="fa fa-star-o" aria-hidden="true"></i>
             </button>
 
-            <button ng-show="pic.isLinked" ng-click="unlinkPic(pic)" class="btn">
+            <button ng-show="pic.isLinked" ng-click="unlinkPic(pic)" ng-disabled="!userDetails.isLogged" class="btn">
                 <i class="fa fa-star" aria-hidden="true"></i>
             </button>
         </div>
