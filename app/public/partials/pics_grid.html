@@ -1,12 +1,12 @@
 <div class="grid">
     <div ng-repeat="pic in pics" class="pic-div grid-item">
+        <button ng-show="shouldShowDeleteLink" ng-click="deletePic(pic)" class="btn btn-danger pull-right">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
         <div class="pic-div-content text-center">
             <img ng-src="{{pic.url}}" class="interest-img"/>
-            <h4>{{pic.title}}</h4>
+            <h4 class="pic-title">{{pic.title}}</h4>
             <a ng-href="{{'/#/pics/' + pic.creator}}">{{pic.creator}}</a>
-            <button ng-show="shouldShowDeleteLink" ng-click="deletePic(pic)" class="btn btn-danger">
-                <i class="fa fa-times" aria-hidden="true"></i>
-            </button>
 
             <button ng-show="userDetails.isLogged && !pic.isLinked" ng-click="linkToPic(pic)" class="btn">
                 <i class="fa fa-star-o" aria-hidden="true"></i>

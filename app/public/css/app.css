@@ -39,3 +39,8 @@ body {
     border: solid whitesmoke 1px;
     padding: 0.5em;
 }
+
+
+.pic-title {
+    overflow-wrap:break-word;
+}

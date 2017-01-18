@@ -135,12 +135,14 @@ cloneControllers.controller('footerController', ['$rootScope','cloneService',
             cloneService.linkToPicture(pic._id).then(function() {
 
             });
+            pic.isLinked = true;
         };
 
         $rootScope.unlinkPic = function(pic) {
             cloneService.unlinkPic(pic._id).then(function() {
 
             });
+            pic.isLinked = false;
         };
 
     }]);

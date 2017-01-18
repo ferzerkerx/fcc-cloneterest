@@ -72,13 +72,15 @@ function ApiService () {
 
     this.deletePic = function(req, res) {
         var filters = {creator: req.session.userData.userName, _id: req.params.selectedPic};
-        UserPic.findOneAndRemove(filters, function(err, pic) {
-            if (err) {
+        UserPic.findOneAndRemove(filters).exec()
+            .then(function deleteStarredLinks(pic) {
+                StarredPic.find({pic: pic._id}).remove().exec();
+                return res.json(pic);
+            })
+            .catch(function(err) {
                 console.log(err);
                 return res.status(500).json(err);
-            }
-            return res.json(pic);
-        });
+            });
     };
 
     this.linkPic = function(req, res) {
