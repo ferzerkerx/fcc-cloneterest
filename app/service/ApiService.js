@@ -65,6 +65,11 @@ function ApiService () {
         handlePicturesRequest(filters, req, res);
     };
 
+    this.listPicsForUser = function (req, res) {
+        var filters = {creator: req.params.userName};
+        handlePicturesRequest(filters, req, res);
+    };
+
     this.deletePic = function(req, res) {
         var filters = {creator: req.session.userData.userName, _id: req.params.selectedPic};
         UserPic.findOneAndRemove(filters, function(err, pic) {

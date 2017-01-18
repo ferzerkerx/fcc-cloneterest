@@ -27,6 +27,21 @@ cloneControllers.controller('allPicsController', ['$scope', '$route', '$window',
 
     }]);
 
+
+cloneControllers.controller('userPicsController', ['$scope', '$route', '$window','$location', '$routeParams' ,'cloneService',
+    function ($scope, $route, $window, $location, $routeParams, cloneService) {
+
+        var listPics = function(userName) {
+            cloneService.listPicsForUser(userName).then(function(data) {
+                $scope.pics = data;
+            });
+            $scope.shouldShowDeleteLink = false;
+        };
+
+        listPics($routeParams.userName);
+
+    }]);
+
 cloneControllers.controller('myPicsController', ['$scope', '$route', '$window','$location', 'cloneService',
     function ($scope, $route, $window, $location, cloneService) {
 

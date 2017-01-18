@@ -11,14 +11,21 @@ cloneServices.factory('cloneService', ['$http', '$location',
             appContext =  appContext.substring(0, appContext.indexOf("#") - 1);
         }
 
-        var listPics= function() {
+        var listPics = function() {
             var url = appContext + '/api/all-pics';
             return $http.get(url).then(function (response) {
                 return response.data;
             });
         };
 
-        var savePicture= function(data) {
+        var listPicsForUser = function(userName) {
+            var url = appContext + '/api/pics/' + userName;
+            return $http.get(url).then(function (response) {
+                return response.data;
+            });
+        };
+
+        var savePicture = function(data) {
             var url = appContext + '/api/pic';
             return $http.post(url, data).then(function (response) {
                 return response.data;
@@ -76,6 +83,7 @@ cloneServices.factory('cloneService', ['$http', '$location',
 
         return {
             listPics: listPics,
+            listPicsForUser: listPicsForUser,
             savePicture: savePicture,
             listMyPics: listMyPics,
             doLogin: doLogin,

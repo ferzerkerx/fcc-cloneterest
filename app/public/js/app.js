@@ -22,6 +22,10 @@ cloneterestApp.config(['$routeProvider',
             templateUrl: 'public/partials/all-pics.html',
             controller: 'allPicsController'
         }).
+        when('/pics/:userName', {
+            templateUrl: 'public/partials/user-pics.html',
+            controller: 'userPicsController'
+        }).
         otherwise({
             redirectTo: '/all-pics'
         });
