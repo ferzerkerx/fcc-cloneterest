@@ -2,36 +2,98 @@
 
 var path = process.cwd();
 var UserPic = require(path + '/app/models/UserPic.js');
+var StarredPic = require(path + '/app/models/StarredPic.js');
 var OAuth = require('oauth');
 var qs = require("qs");
 
 function ApiService () {
 
-    this.listAllPics = function (req, res) {
+    var populateImages = function(filters, images, starredImagesIds) {
 
-        UserPic.find({}, function(err, userPics){
-            if (err) {
+        return UserPic.find(filters).exec()
+            .then(function calculateLinkedPictures(pics) {
+                pics.forEach(function(elem) {
+
+                    var picInfo = {creator: elem.creator,
+                        title: elem.title,
+                        url: elem.title,
+                        description: elem.description,
+                        _id: elem._id,
+                        isLinked: starredImagesIds[elem._id.toString()]
+                    };
+                    images.push(picInfo);
+                });
+            })
+            .catch(function (err) {
+                throw err;
+            });
+    };
+
+    var handlePicturesRequest = function(filters, req, res) {
+        var userData = req.session.userData;
+        var starredPicsIds = {};
+        var pics = [];
+
+        if (userData && userData.userName) {
+            StarredPic.find({user_name: userData.userName}).exec().then(function mapStarredIds(starredPics) {
+                starredPics.forEach(function(element) {
+                    starredPicsIds[element.pic.toString()] = true;
+                });
+                populateImages({}, pics, starredPicsIds).then(function() {
+                    return res.json(pics);
+                });
+
+            }).catch(function (err) {
                 console.log(err);
                 return res.json(500, {});
-            }
-            return res.json(userPics);
-        });
+            });
+        }
+        else {
+            populateImages({}, pics, starredPicsIds).then(function() {
+                return res.json(pics);
+            });
+        }
+    };
+
+    this.listAllPics = function (req, res) {
+        var filters = {};
+        handlePicturesRequest(filters, req, res);
     };
 
     this.listMyPics = function (req, res) {
-
-        UserPic.find({creator: req.session.userData.userName}, function(err, userPics){
-            if (err) {
-                console.log(err);
-                return res.json(500, {});
-            }
-            return res.json(userPics);
-        });
+        var filters = {creator: req.session.userData.userName};
+        handlePicturesRequest(filters, req, res);
     };
 
     this.deletePic = function(req, res) {
         var filters = {creator: req.session.userData.userName, _id: req.params.selectedPic};
         UserPic.findOneAndRemove(filters, function(err, pic) {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(err);
+            }
+            return res.json(pic);
+        });
+    };
+
+    this.linkPic = function(req, res) {
+        var starredPic = new StarredPic({
+            user_name: req.session.userData.userName,
+            pic: req.params.selectedPic
+        });
+
+        starredPic.save(function(err, starred) {
+            if (err) {
+                console.log(err);
+                return res.json(500, {});
+            }
+            return res.json(starred);
+        });
+    };
+
+    this.unlinkPic = function(req, res) {
+        var filters = {user_name: req.session.userData.userName, pic: req.params.selectedPic};
+        StarredPic.findOneAndRemove(filters, function(err, pic) {
             if (err) {
                 console.log(err);
                 return res.status(500).json(err);
@@ -60,8 +122,6 @@ function ApiService () {
         });
 
     };
-
-
 
     this.userDetails = function(req, res) {
         var session = req.session;

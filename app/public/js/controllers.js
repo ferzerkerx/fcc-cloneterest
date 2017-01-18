@@ -20,6 +20,7 @@ cloneControllers.controller('allPicsController', ['$scope', '$route', '$window',
             cloneService.listPics().then(function(data) {
                 $scope.pics = data;
             });
+            $scope.shouldShowDeleteLink = false;
         };
 
         listPics();
@@ -33,6 +34,7 @@ cloneControllers.controller('myPicsController', ['$scope', '$route', '$window','
             cloneService.listMyPics().then(function(data) {
                 $scope.pics = data;
             });
+            $scope.shouldShowDeleteLink = true;
         };
 
         $scope.showPicDialog = function() {
@@ -47,7 +49,7 @@ cloneControllers.controller('myPicsController', ['$scope', '$route', '$window','
                 url : $scope.form.url
             };
             cloneService.savePicture(data).then(function(data) {
-                // $('#picsModal').modal('hide');
+                $('#picsModal').modal('hide');
                 location.reload();
             });
         };
@@ -68,7 +70,6 @@ cloneControllers.controller('myPicsController', ['$scope', '$route', '$window','
                 });
             }
         };
-
 
         resetForm();
         listMyPics();
@@ -100,10 +101,22 @@ cloneControllers.controller('barController', ['$scope', '$rootScope', '$route', 
     }]);
 
 
-cloneControllers.controller('footerController', ['$rootScope',
-    function ($rootScope) {
+cloneControllers.controller('footerController', ['$rootScope','cloneService',
+    function ($rootScope, cloneService) {
         $rootScope.postRender = (function(){
             initializeMasonry();
         });
+
+        $rootScope.linkToPic = function(pic) {
+            cloneService.linkToPicture(pic._id).then(function() {
+
+            });
+        };
+
+        $rootScope.unlinkPic = function(pic) {
+            cloneService.unlinkPic(pic._id).then(function() {
+
+            });
+        };
 
     }]);

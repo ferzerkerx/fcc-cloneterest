@@ -60,6 +60,20 @@ cloneServices.factory('cloneService', ['$http', '$location',
             });
         };
 
+        var linkToPicture =  function(picId) {
+            var url = appContext + '/api/link-pic/' + picId;
+            return $http.post(url).then(function (response) {
+                return response.data;
+            });
+        };
+
+        var unlinkPic = function(picId) {
+            var url = appContext + '/api/link-pic/' + picId;
+            return $http.delete(url).then(function (response) {
+                return response.data;
+            });
+        };
+
         return {
             listPics: listPics,
             savePicture: savePicture,
@@ -67,7 +81,9 @@ cloneServices.factory('cloneService', ['$http', '$location',
             doLogin: doLogin,
             doLogout: doLogout,
             userDetails: userDetails,
-            deletePicture: deletePicture
+            deletePicture: deletePicture,
+            linkToPicture: linkToPicture,
+            unlinkPic: unlinkPic
         };
     }]);
 

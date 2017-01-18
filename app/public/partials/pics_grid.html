@@ -4,8 +4,16 @@
             <img ng-src="{{pic.url}}" class="interest-img"/>
             <h4>{{pic.title}}</h4>
             {{pic.creator}}
-            <button ng-click="deletePic(pic)" class="btn btn-danger">
+            <button ng-show="shouldShowDeleteLink" ng-click="deletePic(pic)" class="btn btn-danger">
                 <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+
+            <button ng-show="!pic.isLinked" ng-click="linkToPic(pic)" class="btn">
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+            </button>
+
+            <button ng-show="pic.isLinked" ng-click="unlinkPic(pic)" class="btn">
+                <i class="fa fa-star" aria-hidden="true"></i>
             </button>
         </div>
     </div>
