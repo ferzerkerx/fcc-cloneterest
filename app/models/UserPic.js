@@ -6,8 +6,7 @@ var Schema = mongoose.Schema;
 var UserPic = new Schema({
     creator: String,
     title: String,
-    url: String,
-    description: String
+    url: String
 });
 
 module.exports = mongoose.model('UserPic', UserPic);

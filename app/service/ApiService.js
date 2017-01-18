@@ -16,8 +16,7 @@ function ApiService () {
 
                     var picInfo = {creator: elem.creator,
                         title: elem.title,
-                        url: elem.title,
-                        description: elem.description,
+                        url: elem.url,
                         _id: elem._id,
                         isLinked: starredImagesIds[elem._id.toString()]
                     };
@@ -110,13 +109,10 @@ function ApiService () {
     };
 
     this.savePic = function(req, res) {
-
-        //TOOD remove hardcoded values
         var pic = new UserPic({
             creator: req.session.userData.userName,
             title: req.body.title,
-            url: '/public/img/placeholder.png', //TODO
-            description: 'someDescription' //TODO
+            url: req.body.url
         });
 
 

@@ -7,7 +7,7 @@ function initializeMasonry() {
     }
     new Masonry( elem, {
         itemSelector: '.grid-item',
-        columnWidth: 200
+        columnWidth: 250
     });
 }
 
@@ -66,7 +66,20 @@ cloneControllers.controller('myPicsController', ['$rootScope', '$scope', '$route
         };
 
         $scope.savePicture = function() {
-            //TODO validate form data
+
+            var form = $scope.form;
+            form.hasError = false;
+            if (!form.title || form.title === "") {
+                form.hasError = true;
+                form.error = 'Please specify a title.';
+                return;
+            }
+
+            if (!form.url || form.url === "") {
+                form.hasError = true;
+                form.error = 'Please specify a valid url.';
+                return;
+            }
 
             var data = {
                 title : $scope.form.title,

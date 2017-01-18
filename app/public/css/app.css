@@ -16,8 +16,8 @@ body {
 }
 
 .interest-img {
-    max-height: 10vh;
-    max-width: 10vw;
+    max-height: 20vh;
+    max-width: 20vw;
 }
 
 .pic-div {
@@ -27,7 +27,9 @@ body {
 
 }
 
-.grid-item { width: 150px; }
+.grid-item {
+    width: 250px;
+}
 
 .add-pic {
 
