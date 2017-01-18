@@ -4,7 +4,7 @@
             <i class="fa fa-times" aria-hidden="true"></i>
         </button>
         <div class="pic-div-content text-center">
-            <img ng-src="{{pic.url}}" class="interest-img"/>
+            <img ng-src="{{pic.url}}" class="interest-img"  onError="this.onerror=null;this.src='/public/img/placeholder.png';"/>
             <h4 class="pic-title">{{pic.title}}</h4>
             <a ng-href="{{'/#/pics/' + pic.creator}}">{{pic.creator}}</a>
 
