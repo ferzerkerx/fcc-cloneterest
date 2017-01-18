@@ -7,7 +7,8 @@ function initializeMasonry() {
     }
     new Masonry( elem, {
         itemSelector: '.grid-item',
-        columnWidth: 250
+        columnWidth: 250,
+        gutter: 5
     });
 }
 

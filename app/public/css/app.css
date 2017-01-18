@@ -7,32 +7,36 @@
 }
 
 body {
-    background-color: #A7CCED;
+    background-color: lavender;
     color: #82A0BC;
 }
 
 .main-content {
-    background-color: #545E75;
+    background-color: whitesmoke;
 }
 
 .interest-img {
-    max-height: 20vh;
-    max-width: 20vw;
+    max-height: 17vh !important;
+    max-width: 17vw !important;
 }
 
 .pic-div {
     padding: 0.3em;
-    background-color: lightgray;
+    background-color: lightblue;
     border-radius: 5px;
+}
 
+.grid {
+    min-height: 50vh;
 }
 
 .grid-item {
     width: 250px;
+    margin-bottom: 1em;
 }
 
 .add-pic {
-
+    margin-bottom: 1.5em;
 }
 
 .pic-div-content {
@@ -40,6 +44,7 @@ body {
     margin: 0.1em auto;
     border: solid whitesmoke 1px;
     padding: 0.5em;
+    background-color: beige;
 }
 
 
