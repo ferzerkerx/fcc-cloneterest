@@ -11,6 +11,10 @@ function initializeMasonry() {
     });
 }
 
+function isUserLoggedIn(rootScope) {
+    return rootScope.userDetails.name
+}
+
 var cloneControllers = angular.module('cloneControllers', []);
 
 cloneControllers.controller('allPicsController', ['$scope', '$route', '$window','$location', 'cloneService',
@@ -42,8 +46,13 @@ cloneControllers.controller('userPicsController', ['$scope', '$route', '$window'
 
     }]);
 
-cloneControllers.controller('myPicsController', ['$scope', '$route', '$window','$location', 'cloneService',
-    function ($scope, $route, $window, $location, cloneService) {
+cloneControllers.controller('myPicsController', ['$rootScope', '$scope', '$route', '$window','$location', 'cloneService',
+    function ($rootScope, $scope, $route, $window, $location, cloneService) {
+
+        if (!isUserLoggedIn($rootScope)) {
+            $location.path('/');
+            return;
+        }
 
         var listMyPics = function() {
             cloneService.listMyPics().then(function(data) {
@@ -118,7 +127,7 @@ cloneControllers.controller('barController', ['$scope', '$rootScope', '$route', 
 
 cloneControllers.controller('footerController', ['$rootScope','cloneService',
     function ($rootScope, cloneService) {
-        $rootScope.postRender = (function(){
+        $rootScope.initializeGrid = (function(){
             initializeMasonry();
         });
 
