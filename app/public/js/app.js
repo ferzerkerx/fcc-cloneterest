@@ -1,9 +1,9 @@
 'use strict';
 
-if (window.opener)  {
-    window.opener.location.reload();
-    window.close();
-}
+// if (window.opener)  {
+//     window.opener.location.reload();
+//     window.close();
+// }
 
 var cloneterestApp = angular.module('cloneterestApp', [
     'ngRoute',
