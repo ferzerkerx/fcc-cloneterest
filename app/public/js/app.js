@@ -1,9 +1,7 @@
 'use strict';
 
  if (window.opener)  {
-     setTimeout(function(){
-         window.opener.location.reload();
-     },100);
+     window.opener.location=window.location;
      window.close();
  }
 
