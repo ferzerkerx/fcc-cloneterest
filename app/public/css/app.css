@@ -22,12 +22,12 @@ body {
 
 .pic-div {
     padding: 0.3em;
-    background-color: lightblue;
     border-radius: 5px;
+    box-shadow: 3px 3px 2px 1px gray;
 }
 
 .grid {
-    min-height: 50vh;
+    min-height: 70vh;
 }
 
 .grid-item {
@@ -44,7 +44,7 @@ body {
     margin: 0.1em auto;
     border: solid whitesmoke 1px;
     padding: 0.5em;
-    background-color: beige;
+    background-color: ghostwhite;
 }
 
 

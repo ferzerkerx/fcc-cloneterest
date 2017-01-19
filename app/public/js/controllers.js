@@ -139,10 +139,10 @@ cloneControllers.controller('barController', ['$scope', '$rootScope', '$route', 
     }]);
 
 
-cloneControllers.controller('footerController', ['$rootScope','cloneService',
-    function ($rootScope, cloneService) {
+cloneControllers.controller('footerController', ['$interval', '$rootScope','cloneService',
+    function ($interval, $rootScope, cloneService) {
         $rootScope.initializeGrid = (function(){
-            initializeMasonry();
+            $interval(initializeMasonry, 10, 1, true);
         });
 
         $rootScope.linkToPic = function(pic) {
