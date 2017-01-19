@@ -1,9 +1,11 @@
 'use strict';
 
-// if (window.opener)  {
-//     window.opener.location.reload();
-//     window.close();
-// }
+ if (window.opener)  {
+     setTimeout(function(){
+         window.opener.location.reload();
+     },100);
+     window.close();
+ }
 
 var cloneterestApp = angular.module('cloneterestApp', [
     'ngRoute',
