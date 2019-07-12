@@ -40,7 +40,7 @@
     "qs": "^6.2.0"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^4.0.1",
+    "copy-webpack-plugin": "^4.6.0",
     "webpack": "^2.6.1"
   }
 }
