@@ -34,7 +34,7 @@
     "express-session": "^1.13.0",
     "jquery": "3.2.1",
     "masonry-layout": "4.1.1",
-    "mongoose": "^5.2.12",
+    "mongoose": "^5.6.4",
     "oauth": "^0.9.14",
     "popper.js": "^1.12.9",
     "qs": "^6.2.0"
