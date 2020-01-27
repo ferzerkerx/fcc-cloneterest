@@ -36,7 +36,7 @@
     "masonry-layout": "4.2.2",
     "mongoose": "^5.8.4",
     "oauth": "^0.9.14",
-    "popper.js": "^1.16.0",
+    "popper.js": "^1.16.1",
     "qs": "^6.9.1"
   },
   "devDependencies": {
